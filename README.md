@@ -51,8 +51,14 @@ The pdk folder has all the information related to the pdk we are using,The Skywa
   i. libs.ref - Contains process specific files
   
   ![](/images/1_2.png)
+  We will be using sky130_fd_sc_hd. THe normenclature is as follows : 
+  - sky130 is process name
+  - fd is foundary name(skywater)
+  - sc is for standard cell
+  - hd is for high density
   
   ii. libs.tech - Contains files specific to tools
+  
   ![](/images/1_3.png)
 
 ### Invoking OpenLane
