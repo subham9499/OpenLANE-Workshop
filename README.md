@@ -17,9 +17,6 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#workshop-introduction">Workshop Introduction</a>
-    </li>
-    <li>
       <a href="#Day 1 Inception of open-source EDA, OpenLANE and Sky130 PDK">Day 1 Inception of Open Source EDA</a>
       <ul>
         <li><a href="#skywater-pdk-files">Skywater PDK Files</a></li>
