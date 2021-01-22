@@ -111,7 +111,7 @@ The config.tcl file shown in this folder contains all the parameters used by Ope
 
 ### Synthesis
 
-To run synthesis type '%run_synthesis'. Now a sysnthesis folder:
+To run synthesis type '%run_synthesis'. Now open sysnthesis folder under reports:
 
 ![](/images/9.png)
 
