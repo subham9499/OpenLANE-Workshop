@@ -111,9 +111,16 @@ The config.tcl file shown in this folder contains all the parameters used by Ope
 
 ### Synthesis
 
-To run synthesis:
+To run synthesis type '%run_synthesis'. Now a sysnthesis folder:
 
-  ![](/images/10.png)
+![](/images/9.png)
 
-Note: Ensure the WNS is an acceptable number, if not please adjust the clock period to fix STA errors.
+yosys_2.stat.rpt folder is the one we use for collculating buffer ratio ,flop ratio etc.
+
+
+
+
+
+
+
 
