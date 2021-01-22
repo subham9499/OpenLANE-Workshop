@@ -46,32 +46,35 @@ The pdk folder has all the information related to the pdk we are using,The Skywa
   1. Skywater-pdk – Contains all the foundry provided PDK related files, i.e timming libraries, tech files etc
   2. Open_pdks – Contains scripts that are used to bridge the gap between closed-source and open-source PDK to EDA tool compatibility, like magic, netgen etc.
   3. Sky130A – The open-source compatible PDK files. Inside Sky-130A we have 2 subdirectories:
+  
   ![](/images/1_1.png)
   
-  i. libs.ref - Contains process specific files
+    i. libs.ref - Contains process specific files
   
-  ![](/images/1_2.png)
-  We will be using sky130_fd_sc_hd. THe normenclature is as follows : 
-  - sky130 is process name
-  - fd is foundary name(skywater)
-  - sc is for standard cell
-  - hd is for high density
+    ![](/images/1_2.png)
+    We will be using sky130_fd_sc_hd. The normenclature is as follows : 
+    - sky130 is process name
+    - fd is foundary name(skywater)
+    - sc is for standard cell
+    - hd is for high density
   
-  ii. libs.tech - Contains files specific to tools
+    ii. libs.tech - Contains files specific to tools
   
-  ![](/images/1_3.png)
+    ![](/images/1_3.png)
 
 ### Invoking OpenLane
+
+Go to openlane directory and type '$./flow.tcl' to invoke the openlane tool
 
 ![](/images/2.png)
 
   - ./flow.tcl is the script which runs the OpenLANE flow
   - OpenLANE can be run interactively or in autonomous mode. 
-  - To run it interactively we use the command ,/flow.tcl -interactive
+  - To run it interactively we use the command '$/flow.tcl -interactive'
    
 
 ### Package Importing
-Different software dependencies are needed to run OpenLANE. To import these into the OpenLANE tool we need to run:
+We need to import all the pacakages required to run this flow:
 
 ![](/images/3.png)
 
@@ -79,8 +82,10 @@ Different software dependencies are needed to run OpenLANE. To import these into
 All designs run within OpenLANE are extracted from the openlane/designs folder:
 
 ![](/images/4.png)
+These are the built in designs. If we need to add our own design, we need to create a folder of our design here.
 
 ### Design Folder Hierarchy
+WE will be using picorc32a design:
 
 ![](/images/5.png)
 
