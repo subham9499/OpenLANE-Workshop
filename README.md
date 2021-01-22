@@ -29,8 +29,9 @@
         <li><a href="#synthesis">Synthesis</a></li>
       </ul>
     </li>
-    <li>
+    
   </ol>
+  </details>
       
 
 <!-- Day 1 Inception of Open Source EDA -->
