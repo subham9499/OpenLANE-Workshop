@@ -49,18 +49,18 @@ The pdk folder has all the information related to the pdk we are using,The Skywa
   
   ![](/images/1_1.png)
   
-    i. libs.ref - Contains process specific files
+   i. libs.ref - Contains process specific files
   
-    ![](/images/1_2.png)
-    We will be using sky130_fd_sc_hd. The normenclature is as follows : 
-    - sky130 is process name
-    - fd is foundary name(skywater)
-    - sc is for standard cell
-    - hd is for high density
+   ![](/images/1_2.png)
+   We will be using sky130_fd_sc_hd. The normenclature is as follows : 
+   - sky130 is process name
+   - fd is foundary name(skywater)
+   - sc is for standard cell
+   - hd is for high density
   
-    ii. libs.tech - Contains files specific to tools
+   ii. libs.tech - Contains files specific to tools
   
-    ![](/images/1_3.png)
+   ![](/images/1_3.png)
 
 ### Invoking OpenLane
 
@@ -100,17 +100,13 @@ An example of a configuration file is given:
 ### Prepare Design
 Prep is used to make file structure for our design. To set this up do:
 
+![](/images/8.png)
+
+After running this look in the openlane/design/picro32a folder and you will see runs folder being created. Inside the runs folder we will have a folder with the present date and inside it we have these folders :
+
   ![](/images/7.png)
 
-After running this look in the openlane/design/picro32a folder and you will see there is a new directory structure created in this folder under the runs folder so to enable OpenLANE flow:
-
-  ![](/images/8.png)
-
 The config.tcl file shown in this folder contains all the parameters used by OpenLANE for this specific run.
-
-In addition, preparing the design in OpenLANE merges the technology LEF and cell LEF information. Technology LEF information contains layer definitions and a set of restricted design rules needed for PnR flow. The cell LEF contains obstruction information of each standard cell needed to minimize DRC errors during PnR flow:
-
-  ![](/images/9.png)
 
 ### Synthesis
 
