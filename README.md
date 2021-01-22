@@ -71,6 +71,7 @@ Go to openlane directory and type '$./flow.tcl' to invoke the openlane tool
   - ./flow.tcl is the script which runs the OpenLANE flow
   - OpenLANE can be run interactively or in autonomous mode. 
   - To run it interactively we use the command '$/flow.tcl -interactive'
+  - To run it in autonomous we use the command '$/flow.tcl -design <design name>'
    
 
 ### Package Importing
