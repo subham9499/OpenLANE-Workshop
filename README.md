@@ -115,7 +115,7 @@ To run synthesis type '%run_synthesis'. Now a sysnthesis folder:
 
 ![](/images/9.png)
 
-yosys_2.stat.rpt folder is the one we use for collculating buffer ratio ,flop ratio etc.
+yosys_2.stat.rpt folder is the one we use for calculating buffer ratio ,flop ratio etc.
 
 
 
