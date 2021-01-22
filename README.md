@@ -37,13 +37,21 @@
 
 ### Skywater PDK Files
 
-The Skywater PDK files we are working with are described under $PDK_ROOT. There are three subdirectories needed for the workshop:
+The pdk folder has all the information related to the pdk we are using,The Skywater PDK in our case.The Syywater 13 0 is a 130nm PDK files we are working with are described under $PDK_ROOT. There are three subdirectories needed for the workshop:
 
 ![](/images/1.png)
 
-  1. Skywater-pdk – Contains all the foundry provided PDK related files
-  2. Open_pdks – Contains scripts that are used to bridge the gap between closed-source and open-source PDK to EDA tool compatibility
-  3. Sky130A – The open-source compatible PDK files
+  1. Skywater-pdk – Contains all the foundry provided PDK related files, i.e timming libraries, tech files etc
+  2. Open_pdks – Contains scripts that are used to bridge the gap between closed-source and open-source PDK to EDA tool compatibility, like magic, netgen etc.
+  3. Sky130A – The open-source compatible PDK files. Inside Sky-130A we have 2 subdirectories:
+  ![](/images/1_1.png)
+  
+  i. libs.ref - Contains process specific files
+  
+  ![](/images/1_2.png)
+  
+  ii. libs.tech - Contains files specific to tools
+  ![](/images/1_3.png)
 
 ### Invoking OpenLane
 
