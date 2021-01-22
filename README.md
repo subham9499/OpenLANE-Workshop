@@ -30,6 +30,7 @@
       </ul>
     </li>
     <li>
+  </ol>
       
 
 <!-- Day 1 Inception of Open Source EDA -->
