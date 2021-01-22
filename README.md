@@ -240,7 +240,7 @@ OpenLANE flow consists of several stages. By default, all flow steps are run in 
   </ul>
 
 <!-- Day 1 Inception of Open Source EDA -->
-## Day 1 Inception of Open Source EDA
+## Day 1 Inception of open-source EDA, OpenLANE and Sky130 PDK
 
 ### Skywater PDK Files
 
