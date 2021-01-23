@@ -117,6 +117,36 @@ To run synthesis type '%run_synthesis'. Now open sysnthesis folder under reports
 
 yosys_2.stat.rpt folder is the one we use for calculating buffer ratio ,flop ratio etc.
 
+## Day 2 Floorplan and Introduction to Library Cells
+
+# Floorplan 
+
+To run the floor plan in openlane :
+
+![](/images/10.png)
+
+Important points:
+- Standard cells doesn't get placed in floor plan but in the placement stage.
+- Precedance order: sky130A_sky130_fd_sc_hd.cofig.tcl > config.tcl >floorplan.tcl
+
+# View Floorplan in Magic
+
+Syntax for viewing floorplan in magic is:
+$ magic -T <magic tech file> lef read <lef file> def read <def file>
+  
+![](/images/11.png)
+
+Therefore for viewing floorplan in magic we need :  Magic technology file, i.e sky130A.tech, merged lef file and def file of floorplan 
+
+The magic window starts:
+
+![](/images/12.png)
+
+
+
+  
+
+
 
 
 
