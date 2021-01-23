@@ -30,7 +30,7 @@
       </ul>
       </li>
       <li>
-      <a href="#Day 2 Floorplan and Placement">#Day 2 Floorplan and Placement</a>
+      <a href="#Day 2 Floorplan and Placement">Day 2 Floorplan and Placement</a>
       <ul>
         <li><a href="#Floorplan">Floorplan</a></li>
         <li><a href="#View Floorplan in Magic">View Floorplan in Magic</a></li>
