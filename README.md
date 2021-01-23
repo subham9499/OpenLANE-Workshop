@@ -28,6 +28,8 @@
         <li><a href="#prepare-design">Prepare Design</a></li>
         <li><a href="#synthesis">Synthesis</a></li>
       </ul>
+      </li>
+      <li>
       <a href="#Day 2 Floorplan and Placement">#Day 2 Floorplan and Placement</a>
       <ul>
         <li><a href="#Floorplan">Floorplan</a></li>
