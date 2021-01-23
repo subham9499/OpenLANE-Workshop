@@ -28,6 +28,13 @@
         <li><a href="#prepare-design">Prepare Design</a></li>
         <li><a href="#synthesis">Synthesis</a></li>
       </ul>
+      <a href="#Day 2 Floorplan and Placement">#Day 2 Floorplan and Placement</a>
+      <ul>
+        <li><a href="#Floorplan">Floorplan</a></li>
+        <li><a href="#View Floorplan in Magic">View Floorplan in Magic</a></li>
+        <li><a href="#Placement">Placement</a></li>
+        <li><a href="#View Placement in Magic">View Placement in Magic</a></li>
+      </ul>
     </li>
     
   </ol>
@@ -117,7 +124,7 @@ To run synthesis type '%run_synthesis'. Now open sysnthesis folder under reports
 
 yosys_2.stat.rpt folder is the one we use for calculating buffer ratio ,flop ratio etc.
 
-## Day 2 Floorplan and Introduction to Library Cells
+## Day 2 Floorplan and Placement
 
 ### Floorplan 
 
