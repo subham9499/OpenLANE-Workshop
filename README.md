@@ -39,7 +39,7 @@
 
 ### Skywater PDK Files
 
-The pdk folder has all the information related to the pdk we are using,The Skywater PDK in our case.The Syywater 13 0 is a 130nm PDK files we are working with are described under $PDK_ROOT. There are three subdirectories needed for the workshop:
+The pdk folder has all the information related to the pdk we are using, Skywater PDK in our case. Skywater130 is a 130nm PDK files. There are three subdirectories that we will be using:
 
 ![](/images/1.png)
 
@@ -119,7 +119,7 @@ yosys_2.stat.rpt folder is the one we use for calculating buffer ratio ,flop rat
 
 ## Day 2 Floorplan and Introduction to Library Cells
 
-# Floorplan 
+### Floorplan 
 
 To run the floor plan in openlane :
 
@@ -127,9 +127,9 @@ To run the floor plan in openlane :
 
 Important points:
 - Standard cells doesn't get placed in floor plan but in the placement stage.
-- Precedance order: sky130A_sky130_fd_sc_hd.cofig.tcl > config.tcl >floorplan.tcl
+- Precedence order: sky130A_sky130_fd_sc_hd.cofig.tcl > config.tcl >floorplan.tcl
 
-# View Floorplan in Magic
+### View Floorplan in Magic
 
 Syntax for viewing floorplan in magic is:
 $ magic -T <magic tech file> lef read <lef file> def read <def file>
@@ -138,9 +138,38 @@ $ magic -T <magic tech file> lef read <lef file> def read <def file>
 
 Therefore for viewing floorplan in magic we need :  Magic technology file, i.e sky130A.tech, merged lef file and def file of floorplan 
 
-The magic window starts:
+Press s followed by v to select and view the whole design:
 
-![](/images/12.png)
+![](/images/12_1.png)
+
+### Placement
+
+In the placement stage the positions of standard cells get fixed. Placement in OpneLANE happens in two stages:
+ 1.Global Placement - Optimization is the main criteria here. Optimize by reducing wire length by reducing Half perimeter wire length(HPWL). It is not legal placement i.t standard cells in rows might overlap
+ 2.Detailed Placement - Legalization is the main criteria here.
+ 
+ Placement in OpenLANE is done by:
+ 
+ ![](/images/13.png)
+ 
+ Reports after placement:
+ 
+  ![](/images/14.png)
+  
+  ### View Placement in Magic
+  
+Syntax for viewing placement in magic is:
+$ magic -T <magic tech file> lef read <lef file> def read <def file>
+  
+![](/images/16.png)
+
+Therefore for viewing placement in magic we need :  Magic technology file, i.e sky130A.tech, merged lef file and def file of placement 
+
+Press s followed by v to select and view the whole design:
+
+![](/images/15.png)
+
+ 
 
 
 
