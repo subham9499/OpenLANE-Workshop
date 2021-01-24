@@ -32,6 +32,16 @@
       <li>
       <a href="#Day 2 Floorplan and Placement">Day 2 Floorplan and Placement</a>
       <ul>
+        <li><a href="#Clone the git repo containing skywater spice model files and copy the skywater tech file into folder">Clone the git repo containing skywater spice model files and copy the skywater tech file into folder</a></li>
+        <li><a href="#Viewing the Inverter Standard cell in Magic">Viewing the Inverter Standard cell in Magic</a></li>
+        <li><a href="#DRC">DRC</a></li>
+        <li><a href="#Extraction to Spice using Magic">Extraction to Spice using Magic</a></li>
+        <li><a href="#Spice Simulation">Spice Simulation</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#Day 3 Design library cell using Magic Layout and ngspice characterization">Day 2 Floorplan and Placement</a>
+      <ul>
         <li><a href="#Floorplan">Floorplan</a></li>
         <li><a href="#View Floorplan in Magic">View Floorplan in Magic</a></li>
         <li><a href="#Placement">Placement</a></li>
