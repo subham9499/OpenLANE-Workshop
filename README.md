@@ -206,6 +206,36 @@ Invoking Magic:
 Inverter Layout in Magic:
 ![](/images/22.png)
 
+Layers and components of the inverter :
+
+![](/images/23.png)
+
+Point towards a part and press 's', then type `what` on tkcon window:
+
+![](/images/24.png)
+
+Point towards a part and press 's' three times to see all connections to that part:
+
+![](/images/25.png)
+
+### DRC 
+
+The DRC(Design Rule Check) errors are highlighted by dottend lines. DRC should be 0 for the component to fabricated.
+
+![](/images/26.png)
+
+DRC options:
+
+![](/images/27.png)
+
+### Extraction to Spice using Magic
+`extract all` creates the .ext file and `ext2spice` creates the .spice file from the .ext file
+Commandands to extract to spice :
+![](/images/28.png)
+
+
+The `.ext` and `.spice` files being created:
+![](/images/29.png)
 
  
 
