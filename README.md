@@ -73,14 +73,14 @@ The pdk folder has all the information related to the pdk we are using, Skywater
 
 ### Invoking OpenLane
 
-Go to openlane directory and type '$./flow.tcl' to invoke the openlane tool
+Go to openlane directory and type `./flow.tcl` to invoke the openlane tool
 
 ![](/images/2.png)
 
   - ./flow.tcl is the script which runs the OpenLANE flow
   - OpenLANE can be run interactively or in autonomous mode. 
-  - To run it interactively we use the command '$/flow.tcl -interactive'
-  - To run it in autonomous we use the command '$/flow.tcl -design <design name>'
+  - To run it interactively we use the command `/flow.tcl -interactive`
+  - To run it in autonomous we use the command `/flow.tcl -design <design name>'
    
 
 ### Package Importing
@@ -95,7 +95,7 @@ All designs run within OpenLANE are extracted from the openlane/designs folder:
 These are the built in designs. If we need to add our own design, we need to create a folder of our design here.
 
 ### Design Folder Hierarchy
-WE will be using picorc32a design:
+We will be using picorv32a design:
 
 ![](/images/5.png)
 
@@ -141,7 +141,7 @@ Important points:
 ### View Floorplan in Magic
 
 Syntax for viewing floorplan in magic is:
-$ magic -T <magic tech file> lef read <lef file> def read <def file>
+`magic -T <magic tech file> lef read <lef file> def read <def file>`
   
 ![](/images/11.png)
 
@@ -168,7 +168,7 @@ In the placement stage the positions of standard cells get fixed. Placement in O
   ### View Placement in Magic
   
 Syntax for viewing placement in magic is:
-$ magic -T <magic tech file> lef read <lef file> def read <def file>
+`magic -T <magic tech file> lef read <lef file> def read <def file>`
   
 ![](/images/16.png)
 
@@ -177,6 +177,35 @@ Therefore for viewing placement in magic we need :  Magic technology file, i.e s
 Press s followed by v to select and view the whole design:
 
 ![](/images/15.png)
+
+## Day 3 Design library cell using Magic Layout and ngspice characterization
+
+### Clone the git repo containing skywater spice model files and copy the skywater tech file into folder
+
+Cloning:
+
+![](/images/17.png)
+
+The vsdstdcelldesign directory:
+
+![](/images/18.png)
+
+Copying skywater.tech file:
+
+![](/images/19.png)
+
+The vsdstdcelldesign directory after copying skywater.tech file into it:
+
+![](/images/20.png)
+
+### Viewing the Inverter Standard cell in Magic
+
+Invoking Magic:
+![](/images/21.png)
+
+Inverter Layout in Magic:
+![](/images/22.png)
+
 
  
 
