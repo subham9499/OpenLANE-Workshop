@@ -222,6 +222,12 @@ The scale should be set 0.01u because in the layout each box is 0.01x0.01u:
 Spice Deck:
 ![](/images/31.png)
 
+Opening the inverter spice file in ngspice:
+![](/images/32.png)
+
+Plotting output, input vs time in ngspice -> `plot y vs time a`
+![](/images/33.png)
+![](/images/34.png)
 
  
 
