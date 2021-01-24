@@ -85,18 +85,15 @@ Go to openlane directory and type `./flow.tcl` to invoke the openlane tool
 
 ### Package Importing
 We need to import all the pacakages required to run this flow:
-
 ![](/images/3.png)
 
 ### Design Folder
 All designs run within OpenLANE are extracted from the openlane/designs folder:
-
 ![](/images/4.png)
 These are the built in designs. If we need to add our own design, we need to create a folder of our design here.
 
 ### Design Folder Hierarchy
 We will be using picorv32a design:
-
 ![](/images/5.png)
 
 Each design hierarchy comes with two distinct components:
@@ -104,16 +101,13 @@ Each design hierarchy comes with two distinct components:
   2. Config.tcl files - Design specific configuration switches used by OpenLANE
 
 An example of a configuration file is given:
-
   ![](/images/6.png)
 
 ### Prepare Design
 Prep is used to make file structure for our design. To set this up do:
-
 ![](/images/8.png)
 
 After running this look in the openlane/design/picro32a folder and you will see runs folder being created. Inside the runs folder we will have a folder with the present date and inside it we have these folders :
-
   ![](/images/7.png)
 
 The config.tcl file shown in this folder contains all the parameters used by OpenLANE for this specific run.
@@ -121,7 +115,6 @@ The config.tcl file shown in this folder contains all the parameters used by Ope
 ### Synthesis
 
 To run synthesis type '%run_synthesis'. Now open sysnthesis folder under reports:
-
 ![](/images/9.png)
 
 yosys_2.stat.rpt folder is the one we use for calculating buffer ratio ,flop ratio etc.
@@ -131,7 +124,6 @@ yosys_2.stat.rpt folder is the one we use for calculating buffer ratio ,flop rat
 ### Floorplan 
 
 To run the floor plan in openlane :
-
 ![](/images/10.png)
 
 Important points:
@@ -142,13 +134,11 @@ Important points:
 
 Syntax for viewing floorplan in magic is:
 `magic -T <magic tech file> lef read <lef file> def read <def file>`
-  
 ![](/images/11.png)
 
 Therefore for viewing floorplan in magic we need :  Magic technology file, i.e sky130A.tech, merged lef file and def file of floorplan 
 
 Press s followed by v to select and view the whole design:
-
 ![](/images/12_1.png)
 
 ### Placement
@@ -158,24 +148,20 @@ In the placement stage the positions of standard cells get fixed. Placement in O
  2.Detailed Placement - Legalization is the main criteria here.
  
  Placement in OpenLANE is done by:
- 
  ![](/images/13.png)
  
  Reports after placement:
- 
   ![](/images/14.png)
   
   ### View Placement in Magic
   
 Syntax for viewing placement in magic is:
 `magic -T <magic tech file> lef read <lef file> def read <def file>`
-  
 ![](/images/16.png)
 
 Therefore for viewing placement in magic we need :  Magic technology file, i.e sky130A.tech, merged lef file and def file of placement 
 
 Press s followed by v to select and view the whole design:
-
 ![](/images/15.png)
 
 ## Day 3 Design library cell using Magic Layout and ngspice characterization
@@ -183,19 +169,15 @@ Press s followed by v to select and view the whole design:
 ### Clone the git repo containing skywater spice model files and copy the skywater tech file into folder
 
 Cloning:
-
 ![](/images/17.png)
 
 The vsdstdcelldesign directory:
-
 ![](/images/18.png)
 
 Copying skywater.tech file:
-
 ![](/images/19.png)
 
 The vsdstdcelldesign directory after copying skywater.tech file into it:
-
 ![](/images/20.png)
 
 ### Viewing the Inverter Standard cell in Magic
@@ -207,25 +189,20 @@ Inverter Layout in Magic:
 ![](/images/22.png)
 
 Layers and components of the inverter :
-
 ![](/images/23.png)
 
 Point towards a part and press 's', then type `what` on tkcon window:
-
 ![](/images/24.png)
 
 Point towards a part and press 's' three times to see all connections to that part:
-
 ![](/images/25.png)
 
 ### DRC 
 
 The DRC(Design Rule Check) errors are highlighted by dottend lines. DRC should be 0 for the component to fabricated.
-
 ![](/images/26.png)
 
 DRC options:
-
 ![](/images/27.png)
 
 ### Extraction to Spice using Magic
@@ -236,6 +213,15 @@ Commandands to extract to spice :
 
 The `.ext` and `.spice` files being created:
 ![](/images/29.png)
+
+### Spice Simulation
+
+The scale should be set 0.01u because in the layout each box is 0.01x0.01u:
+![](/images/30.png)
+
+Spice Deck:
+![](/images/31.png)
+
 
  
 
