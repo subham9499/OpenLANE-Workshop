@@ -39,7 +39,7 @@
       </ul>
     </li>
     <li>
-      <a href="#Day 3 Design library cell using Magic Layout and ngspice characterization">#Day 3 Design library cell using Magic Layout and ngspice characterization</a>
+      <a href="#Day 3 Design library cell using Magic Layout and ngspice characterization">Day 3 Design library cell using Magic Layout and ngspice characterization</a>
       <ul>
         <li><a href="#Clone the git repo containing skywater spice model files and copy the skywater tech file into folder">Clone the git repo containing skywater spice model files and copy the skywater tech file into folder</a></li>
         <li><a href="#Viewing the Inverter Standard cell in Magic">Viewing the Inverter Standard cell in Magic</a></li>
