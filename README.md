@@ -239,6 +239,21 @@ Plotting output, input vs time in ngspice -> `plot y vs time a`
 ![](/images/33.png)
 ![](/images/34.png)
 
+## Day 4
+
+###  LEF File
+The LEF file has the information about input ports, output ports , ground and power ports. These are th eonly information needed fo rplace and route. LEF file in a way protect our IP. Our aim is to extract lef file from mag file.
+
+### PnR Guidelines while making Standard Cell set
+1.Input and output port must liw on vertical and horizontal tracks.
+2.Width of standard cell should be odd multiple of track horizontal pitch and likewise height should an odd multiple of track vertical pitch.
+
+The track file:
+![](/images/35.png)
+![](/images/36.png)
+
+
+
  
 
 
