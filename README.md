@@ -17,7 +17,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#Day 1 Inception of open-source EDA, OpenLANE and Sky130 PDK">Day 1 Inception of open-source EDA, OpenLANE and Sky130 PDK</a>
+      <a href="#Day 1 Inception of open-source EDA, OpenLANE and Sky130 PDK">Day 1 Inception of Open Source EDA</a>
       <ul>
         <li><a href="#skywater-pdk-files">Skywater PDK Files</a></li>
         <li><a href="#invoking-openlane">Invoking OpenLANE</a></li>
@@ -281,6 +281,63 @@ Command to create `.lef` file:
 Viewing th lef file:
 ![](/images/42.png)
 We see that setting a layer as port , it creates a PIN. 
+
+### 
+Copy lef file to `picorv32a/src`:
+![](/images/43.png)
+
+Copy the libraries to `picorv32a/src`:
+![](/images/44.png)
+![](/images/45.png)
+
+### Including Custom Cells in OpenLANE
+
+Modify the `picorv32a/src/config.tcl` file as :
+![](/images/46.png)
+
+prep design:
+![](/images/47.png)
+
+Add these commands to include sky130_vsdinv.lef in ~/tmp/meged.lef in openlane flow:
+![](/images/48.png)
+
+Run synthesis:
+![](/images/49.png)
+
+We see slack violations after synthesis:
+![](/images/50.png)
+
+### Fixing Slack Violations
+
+
+![](/images/51.png)
+
+Improvements in slack violations:
+![](/images/52.png)
+
+### Viewing the Custom Inverter cell in Magic
+
+Run floorplan and placement. Inmvoke magic:
+![](/images/53.png)
+
+Our Standard Inverter cell:
+![](/images/54.png)
+![](/images/55.png)
+
+###
+
+Copy `my_base.sdc` to `picorc32a/src`:
+![](/images/56.png)
+
+my_base.sdc file is as shown:
+![](/images/57.png)
+
+Crate pre_sta.conf file and run `sta pre_sta.conf`
+![](/images/58.png)
+![](/images/59.png)
+![](/images/60.png)
+
+
 
 
 
