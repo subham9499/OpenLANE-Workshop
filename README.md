@@ -252,6 +252,37 @@ The track file:
 ![](/images/35.png)
 ![](/images/36.png)
 
+### Converging grid definitions to track definitions
+
+The grids that we see are according to the track definitions
+![](/images/37.png)
+The tool also works in the similar way. Routing of li1 lef can happen allong these grids. This fullfills the first requirement.
+
+Second criteria:
+We see that the width of standard cell should be odd multiple of track horizontal pitch (the cells inside the inner white line ,3 here(2 full and 2 halves)):
+![](/images/38.png)
+
+### Creating Port Definition
+
+Select the port required and go to `Edit -> Text`. This has already been done in our example.
+![](/images/39_1.png)
+
+### Setting port class and port use attributes
+
+The `class` and `use` are used by the LEF and DEF.
+![](/images/39.png)
+
+### Creating lef file
+
+Command to create `.lef` file:
+![](/images/40.png)
+![](/images/41.png)
+
+Viewing th lef file:
+![](/images/42.png)
+We see that setting a layer as port , it creates a PIN. 
+
+
 
 
  
