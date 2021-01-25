@@ -321,7 +321,9 @@ Run floorplan and placement. Inmvoke magic:
 ![](/images/53.png)
 
 Our Standard Inverter cell:
+
 ![](/images/54.png)
+
 ![](/images/55.png)
 
 ###
@@ -333,8 +335,11 @@ my_base.sdc file is as shown:
 ![](/images/57.png)
 
 Crate pre_sta.conf file and run `sta pre_sta.conf`
+
 ![](/images/58.png)
+
 ![](/images/59.png)
+
 ![](/images/60.png)
 
 
