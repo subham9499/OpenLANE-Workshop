@@ -340,7 +340,15 @@ Crate pre_sta.conf file and run `sta pre_sta.conf`
 
 ![](/images/59.png)
 
-![](/images/60.png)
+![](/images/60_1.png)
+
+###
+
+delay is high for hufe fanout net, so we need to roptimize the fanout
+![](/images/61.png)
+
+Run synthesis, 
+![](/images/62.png)
 
 
 
