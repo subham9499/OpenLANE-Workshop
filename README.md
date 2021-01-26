@@ -30,16 +30,30 @@
       </ul>
       </li>
     <li>
-      <a href="#Day 2 Floorplan and Placement">Day 2 Floorplan and Placement</a>
+      <a href="#Day-2-Floorplan-and-Placement">Day 2 Floorplan and Placement</a>
       <ul>
         <li><a href="#Floorplan">Floorplan</a></li>
-        <li><a href="#View Floorplan in Magic">View Floorplan in Magic</a></li>
+        <li><a href="#View-Floorplan-in-Magic">View Floorplan in Magic</a></li>
         <li><a href="#Placement">Placement</a></li>
-        <li><a href="#View Placement in Magic">View Placement in Magic</a></li>
+        <li><a href="#View-Placement-in-Magic">View Placement in Magic</a></li>
       </ul>
     </li>
     <li>
-      <a href="#Day 3 Design library cell using Magic Layout and ngspice characterization">Day 3 Design library cell using Magic Layout and ngspice characterization</a>
+      <a href="#Day 4 Pre-layout timming analysis and CTS">Day 4 Pre-layout timming analysis and CTS</a>
+      <ul>
+        <li><a href="#LEF File">LEF File</a></li>
+        <li><a href="#PnR Guidelines while making Standard Cell set">PnR Guidelines while making Standard Cell set</a></li>
+        <li><a href="#Converging grid definitions to track definitions">Converging grid definitions to track definitions</a></li>
+        <li><a href="#Creating Port Definition">Creating Port Definition</a></li>
+        <li><a href="#Setting port class and port use attributes">Setting port class and port use attributes</a></li>
+        <li><a href="#Creating lef file">Creating lef file</a></li>
+        <li><a href="#Including Custom Cells in OpenLANE">Including Custom Cells in OpenLANE</a></li>
+        <li><a href="#Fixing Slack Violations">Fixing Slack Violations</a></li>
+        <li><a href="#Viewing the Custom Inverter cell in Magic">Viewing the Custom Inverter cell in Magic</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#Day-4-Design-library-cell-using-Magic-Layouta-nd-ngspice-characterization">Day 3 Design library cell using Magic Layout and ngspice characterization</a>
       <ul>
         <li><a href="#Clone-the-git-repo-containing-skywater-spice-model-files-and-copy-the-skywater-tech-file-into-folder">Clone the git repo containing skywater spice model files and copy the skywater tech file into folder</a></li>
         <li><a href="#Viewing the Inverter Standard cell in Magic">Viewing the Inverter Standard cell in Magic</a></li>
