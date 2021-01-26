@@ -17,7 +17,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#Day 1 Inception of open-source EDA, OpenLANE and Sky130 PDK">Day 1 Inception of Open Source EDA</a>
+      <a href="#Day-1-Inception-of-open-source-EDA-and-introduction-to-OpenLANE-and-Sky130-PDK">Day 1 Inception of Open-Source EDA and Introduction to OpenLANE and Sky130 PDK</a>
       <ul>
         <li><a href="#skywater-pdk-files">Skywater PDK Files</a></li>
         <li><a href="#invoking-openlane">Invoking OpenLANE</a></li>
@@ -54,7 +54,7 @@
       
 
 <!-- Day 1 Inception of Open Source EDA -->
-## Day 1 Inception of open-source EDA, OpenLANE and Sky130 PDK
+## Day 1 Inception of Open-Source EDA and Introduction to OpenLANE and Sky130 PDK
 
 ### Skywater PDK Files
 
@@ -239,7 +239,7 @@ Plotting output, input vs time in ngspice -> `plot y vs time a`
 ![](/images/33.png)
 ![](/images/34.png)
 
-## Day 4
+## Day 4 Pre-layout timming analysis and CTS
 
 ###  LEF File
 The LEF file has the information about input ports, output ports , ground and power ports. These are th eonly information needed fo rplace and route. LEF file in a way protect our IP. Our aim is to extract lef file from mag file.
@@ -344,11 +344,38 @@ Crate pre_sta.conf file and run `sta pre_sta.conf`
 
 ###
 
-delay is high for hufe fanout net, so we need to roptimize the fanout
+delay is high for huge fanout net, so we need to roptimize the fanout
 ![](/images/61.png)
 
 Run synthesis, 
 ![](/images/62.png)
+
+
+## Day 5 Final steps for RTL2GDS (Routing and SPEF Extraction)
+
+### Generating Power Distribution Network
+Check if the CURRENT_DEF is cts.def and then type command `gen_pdn`:
+![](/images/62.png)
+![](/images/63.png)
+`gen_pdn` generates the pdn(power distribution network
+
+### Routing
+
+Check if the CURRENT_DEF is pdn.def and run routing:
+
+![](/images/64.png)
+
+Routing completed:
+
+![](/images/65.png)
+
+
+### SPEF Extraction
+
+![](/images/66.png)
+![](/images/67.png)
+
+
 
 
 
