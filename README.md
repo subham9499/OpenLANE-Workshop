@@ -359,7 +359,7 @@ Run synthesis,
 ![](/images/62.png)
 
 
-## Day 5 Final steps for RTL2GDS (Routing and SPEF Extraction)
+## Day 5 Final steps for RTL2GDS
 
 ### Generating Power Distribution Network
 Check if the CURRENT_DEF is cts.def and then type command `gen_pdn`:
