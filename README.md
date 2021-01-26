@@ -49,7 +49,7 @@
       </ul>
     </li>
     <li>
-      <a href="#Day-5-Final-steps-for-RTL2GDS-(-Routing-and-SPEF- Extraction-)-">Day 5 Final steps for RTL2GDS (Routing and SPEF Extraction)</a>
+      <a href="#Day-5-Final-steps-for-RTL2GDS-(-Routing-and-SPEF-Extraction-)-">Day 5 Final steps for RTL2GDS (Routing and SPEF Extraction)</a>
       <ul>
         <li><a href="#Generating Power Distribution Network">Generating Power Distribution Network</a></li>
         <li><a href="#Routing">Routing</a></li>
