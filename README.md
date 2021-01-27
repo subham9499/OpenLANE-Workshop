@@ -73,9 +73,8 @@
     <li>
       <a href="#Contact">Contact</a>
       </li>
-    <li>
-      <a href="Acknowledgements">Acknowledgements</a>
-      </li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+      
     
   </ol>
   </details>
