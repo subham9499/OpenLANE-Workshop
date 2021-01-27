@@ -75,11 +75,6 @@
       </li>
     <li>
       <a href="Aknowledgements">Aknowledgements</a>
-      <ul>
-        <li><a href="#Power-Distribution-Network">Power Distribution Network</a></li>
-        <li><a href="#Routing">Routing</a></li>
-        <li><a href="#SPEF Extraction">SPEF Extraction</a></li>
-      </ul>
       </li>
     
   </ol>
