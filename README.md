@@ -65,9 +65,10 @@
     <li>
       <a href="#Day-5-Final-steps-for-RTL2GDS">Day 5 Final steps for RTL2GDS</a>
       <ul>
+        <li><a href="#Checking-which-part-of-flow-we-are-in">Checking which part of flow we are in</a></li>
         <li><a href="#Power-Distribution-Network">Power Distribution Network</a></li>
         <li><a href="#Routing">Routing</a></li>
-        <li><a href="#SPEF Extraction">SPEF Extraction</a></li>
+        <li><a href="#SPEF-Extraction">SPEF Extraction</a></li>
       </ul>
       </li>
     <li>
@@ -110,7 +111,8 @@ The pdk folder has all the information related to the pdk we are using, Skywater
 
 ### Invoking OpenLane
 
-Go to openlane directory and type `./flow.tcl` to invoke the openlane tool
+Go to OpenLANE directory and type `./flow.tcl` to invoke the openlane tool.
+To run OpenLANE interactively use the command `./flow.tcl -interactive`
 
 ![](/images/2.png)
 
@@ -121,7 +123,8 @@ Go to openlane directory and type `./flow.tcl` to invoke the openlane tool
    
 
 ### Package Importing
-We need to import all the pacakages required to run this flow:
+We need to import all the pacakages required to run this flow.
+Use the command `% package require openlane 0.9` 
 ![](/images/3.png)
 
 ### Design Folder
@@ -141,17 +144,26 @@ An example of a configuration file is given:
   ![](/images/6.png)
 
 ### Prepare Design
-Prep is used to make file structure for our design. To set this up do:
+`prep -design <design_name>` is used to make file structure for our design.
+
+This command merges the cell LEF and technology LEF information and name sit as `merge.lef`
+1.Cell LEF - Provids the user with information about the standard cells.
+2.Tech LEF - Contains layer definitons and a set of restricted design rules.
+
+To set this up do:
+
 ![](/images/8.png)
 
-After running this look in the openlane/design/picro32a folder and you will see runs folder being created. Inside the runs folder we will have a folder with the present date and inside it we have these folders :
+To create folder with custom name, use this command -> `prep -design <design_name> -tag <folder_name>` .Note that using thsi command doesn't overwrite the already existing folder with the same name. To overwrite the folder use the command -> `prep -design <design_name> -tag <folder_name> -overwrite`
+
+After running this look in the `openlane/design/picorv32a` folder and you will see runs folder being created. Inside the runs folder we will have a folder with the present date and inside it we have these folders :
   ![](/images/7.png)
 
 The config.tcl file shown in this folder contains all the parameters used by OpenLANE for this specific run.
 
 ### Synthesis
 
-To run synthesis type '%run_synthesis'. Now open sysnthesis folder under reports:
+To run synthesis type `%run_synthesis`.Yosys and abc are the tools used in the OpenLANE flow for synthesis.  Now open sysnthesis folder under reports:
 ![](/images/9.png)
 
 yosys_2.stat.rpt folder is the one we use for calculating buffer ratio ,flop ratio etc.
@@ -398,7 +410,7 @@ TO generate PDN us the command:
 
 This creates power ring for the entire core, power halo for any preplaced cells, power straps to bring power into the center of the chip and power rails for the standard cells.
 
-The distribution of powe in the cell is as shown:
+The distribution of power in the cell is as shown:
 
 ![](/images/70.png)
 
