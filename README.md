@@ -65,7 +65,18 @@
     <li>
       <a href="#Day-5-Final-steps-for-RTL2GDS">Day 5 Final steps for RTL2GDS</a>
       <ul>
-        <li><a href="#Generating Power Distribution Network">Generating Power Distribution Network</a></li>
+        <li><a href="#Power-Distribution-Network">Power Distribution Network</a></li>
+        <li><a href="#Routing">Routing</a></li>
+        <li><a href="#SPEF Extraction">SPEF Extraction</a></li>
+      </ul>
+      </li>
+    <li>
+      <a href="#Contact">Contact</a>
+      </li>
+    <li>
+      <a href="Aknowledgements">Aknowledgements"</a>
+      <ul>
+        <li><a href="#Power-Distribution-Network">Power Distribution Network</a></li>
         <li><a href="#Routing">Routing</a></li>
         <li><a href="#SPEF Extraction">SPEF Extraction</a></li>
       </ul>
@@ -75,7 +86,7 @@
   </details>
       
 
-<!-- Day 1 Inception of Open Source EDA -->
+
 ## Day 1 Inception of Open-Source EDA and Introduction to OpenLANE and Sky130 PDK
 
 ### Skywater PDK Files
@@ -375,15 +386,41 @@ Run synthesis,
 
 ## Day 5 Final steps for RTL2GDS
 
-### Generating Power Distribution Network
-Check if the CURRENT_DEF is cts.def and then type command `gen_pdn`:
+### Checking which part of flow we are in 
+
+TO check which part of flow we currently are in use the command:
+`% echo $::env(CURRENT_DEF)`
+
+After the CTS when we use the command we see that  CURRENT_DEF holds the def file that we get after performing the cts stage.
 ![](/images/62.png)
+
+### Power Distribution Network
+
+
+TO generate PDN us the command:
+`gen_pdn`
+
 ![](/images/63.png)
-`gen_pdn` generates the pdn(power distribution network
+
+This creates power ring for the entire core, power halo for any preplaced cells, power straps to bring power into the center of the chip and power rails for the standard cells.
+
+The distribution of powe in the cell is as shown:
+
+![](/images/70.png)
+
+After the PDN stage run `% echo $::env(CURRENT_DEF)` command again, and you will see that the current file is pdn.def
+
+![](/images/71.png)
 
 ### Routing
 
-Check if the CURRENT_DEF is pdn.def and run routing:
+There are two types of routing : Global and Detailed routing. Global routing is done by FastRoute and Detailed routing is done by TritonRoute.
+TritonRoute offers us various routing strategis.ROUTING_STRATEGY from 0 to 3 uses Triton-13 engine which has faster runtime and ROUTING_STRATEGY 14 uses Triton-14 engine which has better DRCs. For checking which strategy we are using use the command :
+
+`% echo $::env(ROUTING_STRATEGY)`
+
+After this run routing by using the command :
+`run_routing`
 
 ![](/images/64.png)
 
@@ -391,12 +428,28 @@ Routing completed:
 
 ![](/images/65.png)
 
-
 ### SPEF Extraction
 
+Once the routing is completed, the interconnect parasitics are extracted to perform sign off Post-STA analysis. These parasitics are extracted into a SPEF file.
+
+The SPEF EXTRACTOR is yet to be integrated to OpenLANE, we have to run it separately. Its available in /work/tools directory. We have to run the python file named main.py in SPEF_EXTRACTOR directory. The command to do this is as folows:
+
+`$ python3 main.py /designs/picorv32a/runs/<tag_name>/tmp/merged.lef /designs/picorv32a/runs/<tag_name>/results/routing/picorv32a.def`
+
 ![](/images/66.png)
+
+After the extraction is complete we open the `/designs/picorv32a/runs/<tag_name>/results/routing` and we will finf .spef file created there:
+
 ![](/images/67.png)
 
+## Contact
+
+Subham Mohapatra - subham.m08@gmail.com
+
+## Acknowledgements
+
+* [Nickson Jose - VSD VLSI Engineer](https://github.com/nickson-jose)
+* [Kunal Ghosh - Co-founder (VSD Corp. Pvt. Ltd)](https://github.com/kunalg123)
 
 
 
