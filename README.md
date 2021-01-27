@@ -74,7 +74,7 @@
       <a href="#Contact">Contact</a>
       </li>
     <li>
-      <a href="Aknowledgements">Aknowledgements"</a>
+      <a href="Aknowledgements">Aknowledgements</a>
       <ul>
         <li><a href="#Power-Distribution-Network">Power Distribution Network</a></li>
         <li><a href="#Routing">Routing</a></li>
