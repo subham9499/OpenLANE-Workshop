@@ -37,10 +37,10 @@
         <li><a href="#Preplaced-Cells">Preplaced Cells</a></li>
         <li><a href="#Decoupling-Capacitors">Decoupling Capacitors</a></li>
         <li><a href="#Power-Planning">Power Planning</a></li>
-        <li><a href="#Pin-Placement">Pin Preplacement</a></li>
         <li><a href="#View-Floorplan-in-Magic">View Floorplan in Magic</a></li>
         <li><a href="#Placement">Placement</a></li>
         <li><a href="#View-Placement-in-Magic">View Placement in Magic</a></li>
+        <li><a href="#Standard-Cell-Characterization">Standard Cell Characterization</a></li>
       </ul>
     </li>
     <li>
@@ -192,111 +192,156 @@ Utilization Factor is as a measure of the area that is being utilized by the net
 ### Preplaced Cells(MACROs)
 Preplace cells or most prominently know as MACROs have reserved slots to be placed at and other cells are bloacled from using these slots during floorplanning. Example for this would be say a multiplier with 50 thousand gates, we need not implement it everytime , we should just implement it once and then instantiate it.
 
+### Decoupling Capacitors
+Decoupling capacitors are huge capacitors having charge up to source voltage and are placed near the preplaced cells. Voltage drops which are associated with interconnect wires can heavily affect noise margin or put it into indeterminate state.It acts as a resovoir when a transition happens in the circuit. It decouples the circuit from main suplly.
+
+### Power Planning
+We place Vdd and ground lines in the power planning process.Coupling capacitance is formed between interconnect wires, when a transition occurs, charge associated with coupling capacitors may be dumped to ground. If there aren't enough ground taps available, the charge will accumulate at the tap which will result in ground line acting as a large resistor which raises the ground voltage. These power lines dump power to the cells.
+
 To run the floor plan in openlane :
+
 ![](/images/10.png)
 
 Important points:
-- 
+-To check clock period use the command `% echo $env(CLOCK_PERIOD)`
+-To change clock period to say 15ns -> `set env(CLOCK_PERIOD) 15` 
 - Precedence order: sky130A_sky130_fd_sc_hd.cofig.tcl > config.tcl >floorplan.tcl
 
 ### View Floorplan in Magic
 
 Syntax for viewing floorplan in magic is:
 `magic -T <magic tech file> lef read <lef file> def read <def file>`
+
 ![](/images/11.png)
 
 Therefore for viewing floorplan in magic we need :  Magic technology file, i.e sky130A.tech, merged lef file and def file of floorplan 
 
-Press s followed by v to select and view the whole design:
+Press `s` followed by `v` to select and view the whole design:
+
 ![](/images/12_1.png)
 
 ### Placement
 
 In the placement stage the positions of standard cells get fixed. Placement in OpneLANE happens in two stages:
- 1.Global Placement - Optimization is the main criteria here. Optimize by reducing wire length by reducing Half perimeter wire length(HPWL). It is not legal placement i.t standard cells in rows might overlap
+ 1.Global Placement - Optimization is the main criteria here. Optimize by reducing wire length by reducing Half perimeter wire length(HPWL). It is not legal placement i.e standard cells in rows might overlap
  2.Detailed Placement - Legalization is the main criteria here.
  
  Placement in OpenLANE is done by:
+ 
  ![](/images/13.png)
  
  Reports after placement:
+ 
   ![](/images/14.png)
   
   ### View Placement in Magic
   
 Syntax for viewing placement in magic is:
 `magic -T <magic tech file> lef read <lef file> def read <def file>`
+
 ![](/images/16.png)
 
 Therefore for viewing placement in magic we need :  Magic technology file, i.e sky130A.tech, merged lef file and def file of placement 
 
-Press s followed by v to select and view the whole design:
+The layout post placement:
 ![](/images/15.png)
+
+### Standard Cell Characterization
+
+Standard Cell Libraries has cells with different functionalities and various flavours of the same cell. These cells need to be characterized by liberty files to be used by synthesis tools to determine optimal circuit arrangement. The open-source software GUNA is used for characterization.
 
 ## Day 3 Design library cell using Magic Layout and ngspice characterization
 
 ### Clone the git repo containing skywater spice model files and copy the skywater tech file into folder
 
-Cloning:
+The work done in Day 3 was mainly on a CMOS inverter designed in Magic tool. Worked on inverter available on nickson-jose 's github repo titled "vsdstdcelldesign".
+
+
+First we clone the repo to our local system:
+
 ![](/images/17.png)
 
-The vsdstdcelldesign directory:
+The vsdstdcelldesign directory is as follows:
+
 ![](/images/18.png)
 
-Copying skywater.tech file:
+Now we copy the skywater skywater.tech file:
+
 ![](/images/19.png)
 
-The vsdstdcelldesign directory after copying skywater.tech file into it:
+The vsdstdcelldesign directory is as follows after copying skywater.tech file into it:
+
 ![](/images/20.png)
 
 ### Viewing the Inverter Standard cell in Magic
 
 Invoking Magic:
+
 ![](/images/21.png)
 
 Inverter Layout in Magic:
+
 ![](/images/22.png)
 
 Layers and components of the inverter :
+
 ![](/images/23.png)
 
 Point towards a part and press 's', then type `what` on tkcon window:
+
 ![](/images/24.png)
 
 Point towards a part and press 's' three times to see all connections to that part:
+
 ![](/images/25.png)
 
 ### DRC 
 
-The DRC(Design Rule Check) errors are highlighted by dottend lines. DRC should be 0 for the component to fabricated.
+The DRC(Design Rule Check) errors are highlighted by dottend lines. DRC should be 0 for the component to fabricated. If DRC is not equal to 0, it is marked red color indicating DRC error.
+
 ![](/images/26.png)
 
-DRC options:
+Options in the DRC menu are as follows:
+
 ![](/images/27.png)
 
 ### Extraction to Spice using Magic
+
 `extract all` creates the .ext file and `ext2spice` creates the .spice file from the .ext file
-Commandands to extract to spice :
+Impementation is as follows:
+
 ![](/images/28.png)
 
-
 The `.ext` and `.spice` files being created:
+
 ![](/images/29.png)
 
 ### Spice Simulation
 
-The scale should be set 0.01u because in the layout each box is 0.01x0.01u:
+The scale should be set 0.01u because in the layout each box is 0.01x0.01 um:
+
 ![](/images/30.png)
 
-Spice Deck:
+Spice Deck of the design is as follows:
+
 ![](/images/31.png)
 
 Opening the inverter spice file in ngspice:
+
 ![](/images/32.png)
 
 Plotting output, input vs time in ngspice -> `plot y vs time a`
+
 ![](/images/33.png)
+
 ![](/images/34.png)
+
+Calculating Rise Time:
+It is defined as time taken for the output to go from 20% of the final value to 80% of the final value. We see that the 20% of final voltage is   0.66V and the 80% value is 2.64V. At 0.66v, time was 2.18193ns and at 2.64v time was 2.24566ns. Therefore the rise time was found to be 63.7ps.
+
+![](/images/72.png)
+
+![](/images/73.png)
 
 ## Day 4 Pre-layout timming analysis and CTS
 
@@ -324,6 +369,7 @@ We see that the width of standard cell should be odd multiple of track horizonta
 ### Creating Port Definition
 
 Select the port required and go to `Edit -> Text`. This has already been done in our example.
+
 ![](/images/39_1.png)
 
 ### Setting port class and port use attributes
@@ -333,81 +379,119 @@ The `class` and `use` are used by the LEF and DEF.
 
 ### Creating lef file
 
-Command to create `.lef` file:
+Command to create `.lef` file is -> `lef write`:
+
 ![](/images/40.png)
+
 ![](/images/41.png)
 
 Viewing th lef file:
+
 ![](/images/42.png)
+
 We see that setting a layer as port , it creates a PIN. 
 
-### 
+
 Copy lef file to `picorv32a/src`:
 ![](/images/43.png)
 
 Copy the libraries to `picorv32a/src`:
+
 ![](/images/44.png)
+
 ![](/images/45.png)
 
 ### Including Custom Cells in OpenLANE
 
 Modify the `picorv32a/src/config.tcl` file as :
+
 ![](/images/46.png)
 
-prep design:
-![](/images/47.png)
+prep design  and this time if you are already using the older tag then use `prep -degign <design_name> -tag <tag_name> -overwrite`.
+-overwrite is significant as it overwrites the new changes made in the configuration files.
 
-Add these commands to include sky130_vsdinv.lef in ~/tmp/meged.lef in openlane flow:
+After add these commands to include sky130_vsdinv.lef in ~/tmp/meged.lef in openlane flow:
+
+`set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs`
+
 ![](/images/48.png)
 
+
 Run synthesis:
+
 ![](/images/49.png)
 
 We see slack violations after synthesis:
+
 ![](/images/50.png)
-
-### Fixing Slack Violations
-
-
-![](/images/51.png)
-
-Improvements in slack violations:
-![](/images/52.png)
 
 ### Viewing the Custom Inverter cell in Magic
 
-Run floorplan and placement. Inmvoke magic:
+Run floorplan and placement. Invoke magic:
 ![](/images/53.png)
 
-Our Standard Inverter cell:
+Our Standard Inverter cell is now integrated to the picorv22a layout:
 
 ![](/images/54.png)
 
+Type the command `expand` in tkcon window to view layout:
+
 ![](/images/55.png)
 
-###
 
 Copy `my_base.sdc` to `picorc32a/src`:
+
 ![](/images/56.png)
 
 my_base.sdc file is as shown:
-![](/images/57.png)
 
-Crate pre_sta.conf file and run `sta pre_sta.conf`
+![](/images/57_1.png)
 
+Crate pre_sta.conf file and run `sta pre_sta.conf` in terminal.
+
+pre_sta.conf
 ![](/images/58.png)
 
+running `sta pre_sta.conf`:
 ![](/images/59.png)
 
 ![](/images/60_1.png)
 
-###
+### Fixing Slack Violations
 
-delay is high for huge fanout net, so we need to roptimize the fanout
-![](/images/61.png)
+Here we change the synthesis strategy from 2 to 1. 
+![](/images/51.png)
 
-Run synthesis, 
-![](/images/62.png)
+Now to reduce the slack violation we will be upsizing the buffere with large delays. Note that we are doing this in terminal (with sta_ pre_conf.sta command) and not inside openlane.
+
+We will upsize cell _41881_ which belongs to net _11341_.
+
+![](/images/51_!.png)
+
+Type command `report_net -connection _11341_` to get details about the net.
+
+![](/images/51_@.png)
+
+To upsize buffere _41881_ from 1 to 4 use the command :
+`replace_cell _41881_ sky130_fd_Sc_hd__buf4`
+
+To check reports type the command  :
+`report_checks -fields {net cap slew input_pins} -digits 4`
+
+![](/images/51_2.png)
+
+
+Go on doing doing this with other bufferes to reduce the slack viloations in range (-1-0)(i.e expample 0.7).
+
+Improvements in slack violations:
+![](/images/51_4.png)
+
+Now use the command `write_verilog <.v file_location>` to update the verilog file after pre_sta reduction in slack violations.
+
+![](/images/51_5.png)
+
+Note not to run synthesis again in openLANE flow and directly run floorplan after this.
 
 
 ## Day 5 Final steps for RTL2GDS
