@@ -33,6 +33,11 @@
       <a href="#Day-2-Floorplan-and-Placement">Day 2 Floorplan and Placement</a>
       <ul>
         <li><a href="#Floorplan">Floorplan</a></li>
+        <li><a href="#Aspect-Ratio-and-Utilization-Factor">Aspect Ratio and Utilization Factorn</a></li>
+        <li><a href="#Preplaced-Cells">Preplaced Cells</a></li>
+        <li><a href="#Decoupling-Capacitors">Decoupling Capacitors</a></li>
+        <li><a href="#Power-Planning">Power Planning</a></li>
+        <li><a href="#Pin-Placement">Pin Preplacement</a></li>
         <li><a href="#View-Floorplan-in-Magic">View Floorplan in Magic</a></li>
         <li><a href="#Placement">Placement</a></li>
         <li><a href="#View-Placement-in-Magic">View Placement in Magic</a></li>
@@ -185,7 +190,7 @@ Aspect Ratio is defined as the ratio of the height of the core to the width of t
 Utilization Factor is as a measure of the area that is being utilized by the netlist. It's defined as the ratio of area occupied by the netlist, to the total area of the core available. It is generally ranges between 0.5 and 0.7.
 
 ### Preplaced Cells(MACROs)
-Preplace cells or most prominently know as MACROs have reserved slots to be placed at and other cells are bloacled from using these slots during floorplanning. Example for this would be say a multiplier with 50 thousand gates, we need not implement it everytime and just use it.
+Preplace cells or most prominently know as MACROs have reserved slots to be placed at and other cells are bloacled from using these slots during floorplanning. Example for this would be say a multiplier with 50 thousand gates, we need not implement it everytime , we should just implement it once and then instantiate it.
 
 To run the floor plan in openlane :
 ![](/images/10.png)
