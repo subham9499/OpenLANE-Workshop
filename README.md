@@ -172,11 +172,26 @@ yosys_2.stat.rpt folder is the one we use for calculating buffer ratio ,flop rat
 
 ### Floorplan 
 
+In the floorplanning stage the following things are done:
+1.Set the core and die area
+2.Placement of Macros and IO pins
+3.Power distribution network(this is normally done in floorplanning stage but in OpenLANE its done after CTS)
+
+Note that Standard cells doesn't get placed in floor plan but in the placement stage.
+
+### Aspect Ratio and Utilization Factor
+
+Aspect Ratio is defined as the ratio of the height of the core to the width of the core. This basically gives us an idea about the shape of the chip. Aspect ratio of 1 implies that the chip is square shaped.
+Utilization Factor is as a measure of the area that is being utilized by the netlist. It's defined as the ratio of area occupied by the netlist, to the total area of the core available. It is generally ranges between 0.5 and 0.7.
+
+### Preplaced Cells(MACROs)
+Preplace cells or most prominently know as MACROs have reserved slots to be placed at and other cells are bloacled from using these slots during floorplanning. Example for this would be say a multiplier with 50 thousand gates, we need not implement it everytime and just use it.
+
 To run the floor plan in openlane :
 ![](/images/10.png)
 
 Important points:
-- Standard cells doesn't get placed in floor plan but in the placement stage.
+- 
 - Precedence order: sky130A_sky130_fd_sc_hd.cofig.tcl > config.tcl >floorplan.tcl
 
 ### View Floorplan in Magic
