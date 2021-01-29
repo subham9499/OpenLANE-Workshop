@@ -47,24 +47,26 @@
       <a href="#Day-3-Design-library-cell-using-Magic-Layouta-and-ngspice-characterization">Day 3 Design library cell using Magic Layout and ngspice characterization</a>
       <ul>
         <li><a href="#Clone-the-git-repo-containing-skywater-spice-model-files-and-copy-the-skywater-tech-file-into-folder">Clone the git repo containing skywater spice model files and copy the skywater tech file into folder</a></li>
-        <li><a href="#Viewing the Inverter Standard cell in Magic">Viewing the Inverter Standard cell in Magic</a></li>
+        <li><a href="#Viewing-the-Inverter-Standard-cell-in-Magic">Viewing the Inverter Standard cell in Magic</a></li>
         <li><a href="#DRC">DRC</a></li>
-        <li><a href="#Extraction to Spice using Magic">Extraction to Spice using Magic</a></li>
-        <li><a href="#Spice Simulation">Spice Simulation</a></li>
+        <li><a href="#Extraction-to-Spice-using-Magic">Extraction to Spice using Magic</a></li>
+        <li><a href="#Spice-Simulation">Spice Simulation</a></li>
       </ul>
     </li>
     <li>
       <a href="#Day-4-Pre-layout-timming-analysis-and-CTS">Day 4 Pre-layout timming analysis and CTS</a>
       <ul>
-        <li><a href="#LEF File">LEF File</a></li>
-        <li><a href="#PnR Guidelines while making Standard Cell set">PnR Guidelines while making Standard Cell set</a></li>
-        <li><a href="#Converging grid definitions to track definitions">Converging grid definitions to track definitions</a></li>
-        <li><a href="#Creating Port Definition">Creating Port Definition</a></li>
-        <li><a href="#Setting port class and port use attributes">Setting port class and port use attributes</a></li>
-        <li><a href="#Creating lef file">Creating lef file</a></li>
-        <li><a href="#Including Custom Cells in OpenLANE">Including Custom Cells in OpenLANE</a></li>
-        <li><a href="#Fixing Slack Violations">Fixing Slack Violations</a></li>
-        <li><a href="#Viewing the Custom Inverter cell in Magic">Viewing the Custom Inverter cell in Magic</a></li>
+        <li><a href="#LEF-File">LEF File</a></li>
+        <li><a href="#PnR-Guidelines-while-making-Standard-Cell-set">PnR Guidelines while making Standard Cell set</a></li>
+        <li><a href="#Converging-grid-definitions-to-track-definitions">Converging grid definitions to track definitions</a></li>
+        <li><a href="#Creating-Port-Definition">Creating Port Definition</a></li>
+        <li><a href="#Setting-port-class-and-port-use-attributes">Setting port class and port use attributes</a></li>
+        <li><a href="#Creating-lef-file">Creating lef file</a></li>
+        <li><a href="#Including-Custom-Cells-in-OpenLANE">Including Custom Cells in OpenLANE</a></li>
+        <li><a href="#Fixing-Slack-Violations">Fixing Slack Violations</a></li>
+        <li><a href="#Viewing-the-Custom-Inverter-cell-in-Magic">Viewing the Custom Inverter cell in Magic</a></li>
+        <li><a href="#Clock-Tree-Synthesis">Clock Tree Synthesis</a></li>
+        <li><a href="#OpenROAD">OpenROAD</a></li>
       </ul>
     </li>
     <li>
@@ -85,6 +87,86 @@
   </ol>
   </details>
       
+## About the Workshop
+
+In this workshop the aim was to learn the RTL to GDSII flow using the OpenLANE which is opensource. The work shop was a 5 day hands on workshop with theory and virtual labs covering all asspects of VLSI design flow from RTL to GDSII.
+OpenLANE is tuned for  the Skywater 130nm open-source PDK and can be used to produce hard macros and chips.
+
+## Setting up OpenLANE 
+
+As OpneLANE is only available for linux based systems you would have to dual boot or use a virtual box .To set up OpenLANE in your local PC with virtual box you need :
+1. Ubuntu OS
+2. 25 GB Disk Space
+
+For installation refer to : 
+1.https://github.com/nickson-jose/openlane_build_script
+2.[A complete guide to install OpenLANE and Sky130nm PDK](https://www.udemy.com/share/103wqAAEESeVZUR3QF/)
+3.[A complete guide to install open-source EDA tools](https://www.udemy.com/share/101skKAEESeVZUR3QF/)
+
+## RTL to GDSII flow
+
+ASIC (Application Specific Integrated Circuit) Design Flow is an iterative and dynamic process which follows various steps.. The flow has 11 different stages as shown below :-
+
+![](/images/images_asic_flow.png)
+
+1. Chip Specification - The VLSI engineers are provided with the specifications according to which they need to  design circuits taht meets these constraints for their system.
+
+2. Design Entry/Functional Verification - In this stage the RTL design and Behavioral Modeling  are performed using the Hardware Description Language (HDL).
+
+3. RTL synthesis - In this stage the system taht was  designed is implemented  and represented and the netlists are tech-mapped to the specific logic gates. 
+
+4. Partitioning of Chip - In this step demarcation of certain sections of the chip and designing each sub-section happens.
+
+5. DFT Insertion - DFT (Design for test) Circuit is inserted.
+
+6. Floorplanning - Placing the core and die happens in this stage. Also  Power Distribution Network is generated in this stage.
+
+7. Placement Stage - In the placement stage the positions of standard cells get fixed. Placement in OpneLANE happens in two stages:
+ 1.Global Placement - Optimization is the main criteria here. Optimize by reducing wire length by reducing Half perimeter wire length(HPWL). It is not legal placement i.e standard cells in rows might overlap
+ 2.Detailed Placement - Legalization is the main criteria here.
+
+8. Clock Tree Synthesis - This stage works towards building a clock distribution network that whose role is to deliver the clock to all associated sequential elements prresent in the design.
+
+9. Routing - This stage implements the interconnect system between standard cells in the design and minimizes DRC errors. 
+
+10. Final Verification - A final verification before sending the chip for fab is done here.
+
+11. GDSII - Graphic Design System(GDS) is a document that contains the layout design of the chip. It comes in the binary format, which is readable by specific EDA tools.This file is sent to fabs to get fabricated.
+
+## The OpenLANE Flow
+
+The OpenLANE Flow is as follows:
+
+![](/images/images_openlane_flow.png)
+
+The various tools used by OpenLANE in ASIC Flo are :
+
+1. **Synthesis**
+    1. `yosys` - Performs RTL synthesis
+    2. `abc` - Performs technology mapping
+    3. `OpenSTA` - Pefroms static timing analysis on the resulting netlist to generate timing reports
+2. **Floorplan and PDN**
+    1. `init_fp` - Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
+    2. `ioplacer` - Places the macro input and output ports
+    3. `pdn` - Generates the power distribution network
+    4. `tapcell` - Inserts welltap and decap cells in the floorplan
+3. **Placement**
+    1. `RePLace` - Performs global placement
+    2. `Resizer` - Performs optional optimizations on the design
+    3. `OpenPhySyn` - Performs timing optimizations on the design
+    4. `OpenDP` - Perfroms detailed placement to legalize the globally placed components
+4. **CTS**
+    1. `TritonCTS` - Synthesizes the clock distribution network (the clock tree)
+5. **Routing** *
+    1. `FastRoute` - Performs global routing to generate a guide file for the detailed router
+    2. `TritonRoute` - Performs detailed routing
+    3. `SPEF-Extractor` - Performs SPEF extraction
+6. **GDSII Generation**
+    1. `Magic` - Streams out the final GDSII layout file from the routed def
+7. **Checks**
+    1. `Magic` - Performs DRC Checks & Antenna Checks
+    2. `Netgen` - Performs LVS Checks
+
 
 
 ## Day 1 Inception of Open-Source EDA and Introduction to OpenLANE and Sky130 PDK
@@ -492,6 +574,31 @@ Now use the command `write_verilog <.v file_location>` to update the verilog fil
 ![](/images/51_5.png)
 
 Note not to run synthesis again in openLANE flow and directly run floorplan after this.
+
+### Clock Tree Synthesis
+
+To run Clock tree synthesis in OpenLANE flow us e the command -> `% run_cts`
+
+OpenLANE will add the necessary buffers required to make sure the timing rules are adhered and will modify our pre-existing netlist.
+A file named "picorv32a.synthesis_cts.v" will be created in the /designs/picorv32a/runs/<tag_name>/results/synthesis directory.
+
+### OpenROAD
+
+Timing analysis is done in OpenLANE by creating a .db database file. This database file is created from the post-cts LEF and DEF files.
+To invoke OpenROAD use command ->  `% openroad`.
+
+Then type these command:
+
+`% write_db pico_cts.db
+% read_db pico_cts.db
+% read_lef <Location_of_LEF_file> //Location of LEF file - /designs/picorv32a/runs/<tag_name>/tmp/merged.lef
+% read_def <Location_of_DEF_file> //Location of DEF file - /designs/picorv32a/runs/<tag_name>/results/cts/picorv23a.cts.def
+% read_verilog <Location_of_verilog_file> //Verilog file - /designs/picorv32a/runs/<tag_name>/results/synthesis/picorv32a.synthesis_cts.v
+% read_liberty $::env(LIB_SYNTH_COMPLETE)
+% link_design <design_name> //design name = picorv32a
+% read_sdc <Location_of_sdc_file> //sdc file - /designs/picorv32a/runs/<tag_name>/src/my_base.sdc
+% set_propagated_clock [all_clocks]
+% report_checks -path_delay min_max -fields {slew trans net cap inpput_pin} -format full_clock_expanded -digits 4 `
 
 
 ## Day 5 Final steps for RTL2GDS
