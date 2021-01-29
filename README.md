@@ -506,8 +506,10 @@ prep design  and this time if you are already using the older tag then use `prep
 
 After add these commands to include sky130_vsdinv.lef in ~/tmp/meged.lef in openlane flow:
 
-`set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
-add_lefs -src $lefs`
+```
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+```
 
 ![](/images/48.png)
 
@@ -601,7 +603,8 @@ To invoke OpenROAD use command ->  `% openroad`.
 
 Then type these command:
 
-`% write_db pico_cts.db
+```
+% write_db pico_cts.db
 % read_db pico_cts.db
 % read_lef <Location_of_LEF_file> //Location of LEF file - /designs/picorv32a/runs/<tag_name>/tmp/merged.lef
 % read_def <Location_of_DEF_file> //Location of DEF file - /designs/picorv32a/runs/<tag_name>/results/cts/picorv23a.cts.def
@@ -610,7 +613,8 @@ Then type these command:
 % link_design <design_name> //design name = picorv32a
 % read_sdc <Location_of_sdc_file> //sdc file - /designs/picorv32a/runs/<tag_name>/src/my_base.sdc
 % set_propagated_clock [all_clocks]
-% report_checks -path_delay min_max -fields {slew trans net cap inpput_pin} -format full_clock_expanded -digits 4 `
+% report_checks -path_delay min_max -fields {slew trans net cap inpput_pin} -format full_clock_expanded -digits 4 
+```
 
 
 ## Day 5 Final steps for RTL2GDS
