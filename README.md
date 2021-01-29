@@ -22,7 +22,7 @@
     <li>      
       <a href="#Setting-up-OpenLANE">Setting up OpenLANE</a>      
       </li>
-    <li
+    <li>
       <a href="#RTL-to-GDSII-flow">RTL to GDSII flow</a>
       </li>
     <li>      
